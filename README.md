@@ -25,14 +25,11 @@ This project demonstrates how to use AI agents to create, modify, and manage des
 ### Quick Start
 
 ```bash
-# Clone the repository (with submodules)
-git clone --recurse-submodules https://github.com/pozasl/pi-penpot-mcp.git
+# Clone the repository
+git clone https://github.com/pozasl/pi-penpot-mcp.git
 cd pi-penpot-mcp
 
-# Or if already cloned, initialize submodules:
-# git submodule update --init --recursive
-
-# Start Penpot and MCP services
+# Start Penpot and MCP services (Dockerfiles fetch latest penpot-mcp source)
 docker-compose up -d
 
 # Access Penpot at http://localhost:8080
@@ -85,16 +82,16 @@ Environment variables are configured in `penpot.env`:
 - `Dockerfile.penpot-mcp-plugin` - Penpot plugin container build
 - `penpot_mcp_client.js` - Example MCP client implementation
 - `penpot.env` - Environment configuration
-- `penpot-mcp-src/` - Git submodule for [penpot/penpot-mcp](https://github.com/penpot/penpot-mcp) (official MCP server & plugin sources)
+- `Dockerfile.penpot-mcp` / `Dockerfile.penpot-mcp-plugin` - Fetch latest MCP source from [penpot/penpot](https://github.com/penpot/penpot) (develop branch, mcp/ directory) during build
 
 ## Updating the MCP Server
 
-To update to the latest penpot-mcp version:
+The Dockerfiles always fetch the latest develop branch. To rebuild with updates:
 ```bash
-git submodule update --remote penpot-mcp-src
+docker-compose build --no-cache penpot-mcp penpot-mcp-plugin
 ```
 
-To pin a specific commit, edit `penpot-mcp-src` directly and commit the change.
+To pin a specific version, edit the `--branch` parameter in both Dockerfiles.
 
 ## Development Workflow
 
