@@ -25,9 +25,12 @@ This project demonstrates how to use AI agents to create, modify, and manage des
 ### Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/pozasl/pi-penpot-mcp.git
+# Clone the repository (with submodules)
+git clone --recurse-submodules https://github.com/pozasl/pi-penpot-mcp.git
 cd pi-penpot-mcp
+
+# Or if already cloned, initialize submodules:
+# git submodule update --init --recursive
 
 # Start Penpot and MCP services
 docker-compose up -d
@@ -82,6 +85,16 @@ Environment variables are configured in `penpot.env`:
 - `Dockerfile.penpot-mcp-plugin` - Penpot plugin container build
 - `penpot_mcp_client.js` - Example MCP client implementation
 - `penpot.env` - Environment configuration
+- `penpot-mcp-src/` - Git submodule for [penpot/penpot-mcp](https://github.com/penpot/penpot-mcp) (official MCP server & plugin sources)
+
+## Updating the MCP Server
+
+To update to the latest penpot-mcp version:
+```bash
+git submodule update --remote penpot-mcp-src
+```
+
+To pin a specific commit, edit `penpot-mcp-src` directly and commit the change.
 
 ## Development Workflow
 

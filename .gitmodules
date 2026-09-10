@@ -1,0 +1,3 @@
+[submodule "penpot-mcp-src"]
+	path = penpot-mcp-src
+	url = https://github.com/penpot/penpot-mcp.git
