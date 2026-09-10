@@ -277,15 +277,10 @@ services:
       - penpot
     environment:
       ## Listen on all interfaces (required in Docker)
-      PENPOT_MCP_SERVER_LISTEN_ADDRESS: 0.0.0.0
-      PENPOT_MCP_PLUGIN_SERVER_LISTEN_ADDRESS: 0.0.0.0
-
-      ## The address clients will use to reach the MCP server.
-      ## Set this to your Penpot instance's hostname/IP if exposing externally.
-      PENPOT_MCP_SERVER_ADDRESS: localhost
+      PENPOT_MCP_SERVER_HOST: 0.0.0.0
 
       ## Single-user mode for local development (no auth token required)
-      ## Set to false for multi-user production deployments
+      ## Set to true for multi-user production deployments
       PENPOT_MCP_REMOTE_MODE: "false"
 
       ## Logging configuration
